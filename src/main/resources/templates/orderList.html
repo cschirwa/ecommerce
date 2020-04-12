@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>E-commerce</title>
+
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"></link>
+<link rel="stylesheet" href="bootstrap/css/menus.css"></link>
+<link rel="stylesheet" href="bootstrap/css/style.css"></link>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"></link>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div id="wrapper">
+		<nav class="navbar navbar-fixed-top navbar-default" role="navigation">
+
+			<div class="navbar-header">
+				<a class="navbar-brand titulo" href="index">Loja Virtual</a>
+			</div>
+
+			<div class="collapse navbar-collapse navbar-ex1-collapse">
+				<ul class="nav navbar-nav side-nav">
+					<li><a href="productList"><i class="fa fa-cart-arrow-down"
+							aria-hidden="true"></i> Produtos</a></li>
+
+					<li><a href="orderList"><i
+							class="fa fa-product-hunt"></i> Pedidos</a></li>
+
+				</ul>
+			</div>
+		</nav>
+
+		
+	<div id="page-wrapper">
+			<div class="container-fluid">
+				<div class="jumbotron">
+					<div class="container">
+						
+						<div class="btn btn-success">
+							<h6>Seu Pedido</h6>
+						</div>
+							
+						<div id="orderList">
+							<table class="table table-hover">
+								<thead>
+									<tr>
+										<th>Código Pedido</th>
+										<th>Nome Produto</th>
+										<th>Data Compra</th>										
+									</tr>
+								</thead>
+								<tr th:each="order : ${orders}">
+									<td><span th:text="${order.id}"></span></td>
+									<td><span th:text="${order.nameProduct}"></span></td>
+									<td><span th:text="${#temporals.format(order.buyDate,'dd-MM-yyyy')}"></span></td>																	
+								</tr>
+
+							</table>
+						</div>
+						
+					<script
+						src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+					<script src="bootstrap/js/bootstrap.min.js"></script>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+</body>
+</html>

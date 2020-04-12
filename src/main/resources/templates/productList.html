@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>E-commerce</title>
+
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"></link>
+<link rel="stylesheet" href="bootstrap/css/menus.css"></link>
+<link rel="stylesheet" href="bootstrap/css/style.css"></link>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"></link>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div id="wrapper">
+		<nav class="navbar navbar-fixed-top navbar-default" role="navigation">
+
+			<div class="navbar-header">
+				<a class="navbar-brand titulo" href="/">Loja Virtual</a>
+			</div>
+
+			<div class="collapse navbar-collapse navbar-ex1-collapse">
+				<ul class="nav navbar-nav side-nav">
+					<li><a href="productList"><i class="fa fa-cart-arrow-down"
+							aria-hidden="true"></i> Produtos</a></li>
+
+					<li><a href="orderList"><i class="fa fa-product-hunt"></i>
+							Pedidos</a></li>
+
+				</ul>
+			</div>
+		</nav>
+
+
+		<div id="page-wrapper">
+			<div class="container-fluid">
+				<div class="jumbotron">
+					<div class="container">
+						<!-- PRODUTO -->
+						<div class="row">
+							<div class="collapse navbar-collapse navbar-ex1-collapse">
+								<ul class="nav navbar-nav side-nav">
+									<li><i class="fa fa-product-hunt"></i> Lista de Produtos</li>	
+								</ul>							
+							</div>
+						</div>
+						
+						<div id="productList">
+							<table class="table table-hover">
+								<thead>
+									<tr>
+										<th>Código Produto</th>
+										<th>Nome Produto</th>
+										<th>Preço</th>
+										<th>Disponível</th>
+										<th>Carrinho</th>
+									</tr>
+								</thead>
+								<tr th:each="prod : ${products}">
+									<td><span th:text="${prod.id}"></span></td>
+									<td><span th:text="${prod.name}"></span></td>
+									<td><span th:text="${prod.price}"></span></td>
+									<td><span th:text="${prod.available}"></span></td>
+									<td><a href="#"
+										th:href="@{/addCart?id={id}(id=${prod.id})}"> <i
+											class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+											Adicionar
+									</a></td>
+								</tr>
+
+							</table>
+
+						</div>
+
+						<hr />
+						<!-- CARRINHO -->
+						<form action="finalOrder" method="post">
+							<div class="row">
+								<div class="collapse navbar-collapse navbar-ex1-collapse">
+									<ul class="nav navbar-nav side-nav">
+										<li><i class="fa fa-product-hunt"></i> Seu Carrinho</li>	
+									</ul>							
+								</div>
+							</div>
+							<div id="cartList">
+								<table class="table table-hover">
+									<thead>
+										<tr>
+											<th>Código Itens Selecionados</th>
+											<th>Código Produto</th>
+											<th>Nome Produto</th>
+											<th>Carrinho</th>
+										</tr>
+									</thead>
+									<tr th:each="cart : ${carts}">
+										<td><span th:text="${cart.id}"></span></td>
+										<td><span th:text="${cart.idProduct}"></span></td>
+										<td><span th:text="${cart.nameProduct}"></span></td>
+										<td><a href="#"
+											th:href="@{/removeCart?id={id}(id=${cart.id})}"> <i
+												class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+												Remover
+										</a></td>
+									</tr>
+
+								</table>
+							</div>
+							<button type="submit" class="btn btn-success">Finalizar
+								Pedido</button>
+						</form>
+
+						<hr />
+
+						<!-- Criar Novo Produto 
+
+						<form action="save" method="post">
+							<div class="form-group">
+								<label for="name">Nome Produto</label> <input type="text"
+									class="form-control" id="name" name="name"
+									placeholder="Produto" />
+							</div>
+							<div class="form-group">
+								<label for="price">Preço</label> <input type="price"
+									class="form-control" id="price" name="price" placeholder="0.00" />
+							</div>
+							<div class="form-group">
+								<label for="available">Disponível</label> <input type="text"
+									class="form-control" id="available" name="available"
+									placeholder="0" />
+							</div>
+							<button type="submit" class="btn btn-success">Salvar</button>
+						</form>
+
+					</div>
+					-->
+						<script
+							src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+						<script src="bootstrap/js/bootstrap.min.js"></script>
+					</div>
+				</div>
+			</div>
+
+		</div>
+</body>
+</html>
