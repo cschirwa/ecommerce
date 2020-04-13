@@ -29,12 +29,13 @@ public class ManagerController {
 	@Autowired
 	private OrderService orderService;
 	
-	
+	//teste
 	@RequestMapping("/")
     public String index(){
         return "index";
     }
-
+	
+	
 	/***
 	 * Produtos
 	 */
